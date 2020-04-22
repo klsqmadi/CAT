@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Cloud Music</title>
+      <link rel="stylesheet" href="./css/common.css">
+      <link rel="stylesheet" href="./css/style.css">
+      <link rel="stylesheet" href="https://at.alicdn.com/t/font_1652991_asf2pzbt8r6.css">
+</head>
+<body>
+<!--nav开始-->
+<header>
+      <nav class="nav_header">
+            <div class="logo"></div>
+            <ul class="nav_list">
+                  <li class="list_item" style="background: #000;"><a href="" style="color: #fff;">发现音乐</a></li>
+                  <li class="list_item"><a href="">我的音乐</a></li>
+                  <li class="list_item"><a href="">朋友</a></li>
+                  <li class="list_item"><a href="">商城</a></li>
+                  <li class="list_item"><a href="">音乐人</a></li>
+                  <li class="list_item"><a href="">下载客户端<i class="hot"></i></a></li>
+            </ul>
+            <div class="search_login">
+                  <i class="search_icon"></i>
+                  <input type="text" placeholder="音乐/视频/电台/用户">
+                  <h4 class="author">创作者中心</h4>
+                  <h5><a href="">登录</a></h5>
+            </div>
+      </nav>
+</header>
+<div class="header_list">
+      <ul>
+            <li class="header_list_content"><a href="" style="background: #9B0909;}">推荐</a></li>
+            <li class="header_list_content"><a href="">排行榜</a></li>
+            <li class="header_list_content"><a href="">歌单</a></li>
+            <li class="header_list_content"><a href="">主播电台</a></li>
+            <li class="header_list_content"><a href="">歌手</a></li>
+            <li class="header_list_content"><a href="">新碟上架</a></li>
+      </ul>
+</div>
+<!--轮播-->
+<div id="loop_play">
+      <div class="loop_play_content">
+            <ul>
+                  <li class="loop_play lpactive" style="background: url(http://p1.music.126.net/fLqgacgm7zFsFbSIu8KcDA==/109951164926562369.jpg?imageView&amp;quality=89) no-repeat;background-size: cover;"><a href=""></a></li>
+                  <li class="loop_play" style="background: url(http://p1.music.126.net/vZy2bLe2kPNRT46zaCGovg==/109951164927892522.jpg?imageView&amp;quality=89) no-repeat;background-size: cover;"><a href=""></a></li>
+                  <li class="loop_play" style="background: url(http://p1.music.126.net/QerZllLRF2_M61AMfeHGHQ==/109951164926826434.jpg?imageView&amp;quality=89) no-repeat;background-size: cover;"><a href=""></a></li>
+                  <li class="loop_play" style="background: url(http://p1.music.126.net/mfzRnrADaaMD6BVh-ldWcw==/109951164928191003.jpg?imageView&amp;quality=89) no-repeat;background-size: cover;"><a href=""></a></li>
+                  <li class="loop_play" style="background: url(http://p1.music.126.net/09QU3aWKJd0z1sMApRdAuA==/109951164926710066.jpg?imageView&amp;quality=89) no-repeat;background-size: cover;"><a href=""></a></li>
+                  <li class="loop_play" style="background: url(http://p1.music.126.net/L-psT-Ml-06s6UNdsncfvQ==/109951164926638445.jpg?imageView&amp;quality=89) no-repeat;background-size: cover;"><a href=""></a></li>
+                  <li class="loop_play" style="background: url(http://p1.music.126.net/jCftUuIstfIJSO6FVtq1pA==/109951164927872810.jpg?imageView&amp;quality=89) no-repeat;background-size: cover;"><a href=""></a></li>
+                  <li class="loop_play" style="background: url(http://p1.music.126.net/j25dN_jqewQTCYytuYDz4g==/109951164926669892.jpg?imageView&amp;quality=89) no-repeat;background-size: cover;"><a href=""></a></li>
+                  <li class="loop_play" style="background: url(http://p1.music.126.net/XQSHJdseKUF6abMCF7a9Mg==/109951164926634718.jpg?imageView&amp;quality=89) no-repeat;background-size: cover;"><a href=""></a></li>
+                  <ul id="loop_play_points">
+                        <!--<li class="loop_play_point lppactive"></li>
+                        <li class="loop_play_point"></li>
+                        <li class="loop_play_point"></li>
+                        <li class="loop_play_point"></li>
+                        <li class="loop_play_point"></li>
+                        <li class="loop_play_point"></li>
+                        <li class="loop_play_point"></li>
+                        <li class="loop_play_point"></li>
+                        <li class="loop_play_point"></li>-->
+                  </ul>
+                  <div class="goPre"><i class="icon-fangxiang iconfont"></i></div>
+            </ul>
+
+            <div class="download">
+                  <a href=""></a>
+                  <p>PC 安卓 iPhone WP iPad Mac 六大客户端</p>
+                  <div class="goNext"><i class="icon-fangxiang1 iconfont"></i></div>
+            </div>
+      </div>
+</div>
+<div class="main">
+      <div class="main_left">
+            <div class="recommend">
+                  <div class="re_hd hd">
+                        <a href=""><i></i>热门推荐</a>
+                        <ul>
+                              <li><a href="">华语</a></li>
+                              <li><a href="">流行</a></li>
+                              <li><a href="">摇滚</a></li>
+                              <li><a href="">民谣</a></li>
+                              <li style="border: none"><a href="">电子</a></li>
+                        </ul>
+                        <div class="more"><a href="">更多</a><i></i></div>
+                  </div>
+                  <ul class="re_bd">
+                        <li class="songlist">
+                              <div class="re_pic">
+                                    <a href=""></a>
+                                    <div class="re_sign">
+                                          <span class="earphoneicon"></span>
+                                          <p class="playcount">9999万</p>
+                                          <a class="playicon"></a>
+                                    </div>
+                              </div>
+                              <a href="" class="re_title">[华语速爆新歌] 最新华语音乐推荐 </a>
+                        </li>
+                        <li class="songlist">
+                        <div class="re_pic">
+                              <a href=""></a>
+                              <div class="re_sign">
+                                    <span class="earphoneicon"></span>
+                                    <p class="playcount">9999万</p>
+                                    <a class="playicon"></a>
+                              </div>
+                        </div>
+                        <a href="" class="re_title">[华语速爆新歌] 最新华语音乐推荐 </a>
+                  </li>
+                        <li class="songlist">
+                              <div class="re_pic">
+                                    <a href=""></a>
+                                    <div class="re_sign">
+                                          <span class="earphoneicon"></span>
+                                          <p class="playcount">9999万</p>
+                                          <a class="playicon"></a>
+                                    </div>
+                              </div>
+                              <a href="" class="re_title">[华语速爆新歌] 最新华语音乐推荐 </a>
+                        </li>
+                        <li class="songlist" style="margin-right: 0">
+                              <div class="re_pic">
+                                    <a href=""></a>
+                                    <div class="re_sign">
+                                          <span class="earphoneicon"></span>
+                                          <p class="playcount">9999万</p>
+                                          <a class="playicon"></a>
+                                    </div>
+                              </div>
+                              <a href="" class="re_title">[华语速爆新歌] 最新华语音乐推荐 </a>
+                        </li>
+                        <li class="songlist">
+                              <div class="re_pic">
+                                    <a href=""></a>
+                                    <div class="re_sign">
+                                          <span class="earphoneicon"></span>
+                                          <p class="playcount">9999万</p>
+                                          <a class="playicon"></a>
+                                    </div>
+                              </div>
+                              <a href="" class="re_title">[华语速爆新歌] 最新华语音乐推荐 </a>
+                        </li>
+                        <li class="songlist">
+                              <div class="re_pic">
+                                    <a href=""></a>
+                                    <div class="re_sign">
+                                          <span class="earphoneicon"></span>
+                                          <p class="playcount">9999万</p>
+                                          <a class="playicon"></a>
+                                    </div>
+                              </div>
+                              <a href="" class="re_title">[华语速爆新歌] 最新华语音乐推荐 </a>
+                        </li>
+                        <li class="songlist">
+                              <div class="re_pic">
+                                    <a href=""></a>
+                                    <div class="re_sign">
+                                          <span class="earphoneicon"></span>
+                                          <p class="playcount">9999万</p>
+                                          <a class="playicon"></a>
+                                    </div>
+                              </div>
+                              <a href="" class="re_title">[华语速爆新歌] 最新华语音乐推荐 </a>
+                        </li>
+                        <li class="songlist" style="margin-right: 0">
+                              <div class="re_pic">
+                                    <a href=""></a>
+                                    <div class="re_sign">
+                                          <span class="earphoneicon"></span>
+                                          <p class="playcount">9999万</p>
+                                          <a class="playicon"></a>
+                                    </div>
+                              </div>
+                              <a href="" class="re_title">[华语速爆新歌] 最新华语音乐推荐 </a>
+                        </li>
+                  </ul>
+            </div>
+            <div class="newsongs">
+                  <div class="ns_hd hd">
+                        <a href=""><i></i>新碟上架</a>
+                        <div class="more"><a href="">更多</a><i></i></div>
+                  </div>
+                  <div class="ns_bd">
+                        <i class="icon-arrow-1 iconfont" style="font-size: 14px"></i>
+                        <i class="icon-arrow- iconfont" style="font-size: 14px"></i>
+                        <ul>
+                              <li class="ns_list">
+                                    <a href="">
+                                          <img src="http://p3.music.126.net/6nuFSMK3UMG5nLsreYX1Vg==/109951164862495860.jpg?param=100y100" alt="">
+                                          <p><a href="" class="songname">Take Yourself Home</a></p>
+                                          <p><a href="" class="songauthor">Troye Sivan</a></p>
+                                    </a>
+                              </li>
+                              <li class="ns_list">
+                                    <a href="">
+                                          <img src="http://p3.music.126.net/6nuFSMK3UMG5nLsreYX1Vg==/109951164862495860.jpg?param=100y100" alt="">
+                                          <p><a href="" class="songname">Take Yourself Home</a></p>
+                                          <p><a href="" class="songauthor">Troye Sivan</a></p>
+                                    </a>
+                              </li>
+                              <li class="ns_list">
+                                    <a href="">
+                                          <img src="http://p3.music.126.net/6nuFSMK3UMG5nLsreYX1Vg==/109951164862495860.jpg?param=100y100" alt="">
+                                          <p><a href="" class="songname">Take Yourself Home</a></p>
+                                          <p><a href="" class="songauthor">Troye Sivan</a></p>
+                                    </a>
+                              </li>
+                              <li class="ns_list">
+                                    <a href="">
+                                          <img src="http://p3.music.126.net/6nuFSMK3UMG5nLsreYX1Vg==/109951164862495860.jpg?param=100y100" alt="">
+                                          <p><a href="" class="songname">Take Yourself Home</a></p>
+                                          <p><a href="" class="songauthor">Troye Sivan</a></p>
+                                    </a>
+                              </li>
+                              <li class="ns_list">
+                                    <a href="">
+                                          <img src="http://p3.music.126.net/6nuFSMK3UMG5nLsreYX1Vg==/109951164862495860.jpg?param=100y100" alt="">
+                                          <p><a href="" class="songname">Take Yourself Home</a></p>
+                                          <p><a href="" class="songauthor">Troye Sivan</a></p>
+                                    </a>
+                              </li>
+                        </ul>
+                  </div>
+            </div>
+            <div class="rank">
+                  <div class="rank_hd hd">
+                        <a href=""><i></i>榜单</a>
+                        <div class="more"><a href="">更多</a><i></i></div>
+                  </div>
+                  <div class="rank_bd">
+                        <div class="rank_column">
+                              <div class="rank_column_top">
+                                    <a href="" class="column_top_left" style="background: url(http://p3.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=100y100) no-repeat; background-size: cover;"></a>
+                                    <div class="column_top_right">
+                                          <a>云音乐飙升榜</a>
+                                          <span style="background: url(./source/play.gif) no-repeat; background-size: cover "></span>
+                                          <span style="background: url(./source/collect.gif) no-repeat; background-size: cover "></span>
+                                    </div>
+                              </div>
+                              <div class="rank_column_bottom">
+                                    <ul>
+                                          <li class="songs"><span class="numbers" style="color: #c10d0c;">1</span><a href="">总有一天你会会知道</a></li>
+                                          <li class="songs"><span class="numbers" style="color: #c10d0c;">2</span><a href="">7%</a></li>
+                                          <li class="songs"><span class="numbers" style="color: #c10d0c;">3</span><a href="">降临</a></li>
+                                          <li class="songs"><span class="numbers">4</span><a href="">瞬息</a></li>
+                                          <li class="songs"><span class="numbers">5</span><a href="">双栖动物</a></li>
+                                          <li class="songs"><span class="numbers">6</span><a href="">未来式情歌</a></li>
+                                          <li class="songs"><span class="numbers">7</span><a href="">好想爱这个世界啊(Live)</a></li>
+                                          <li class="songs"><span class="numbers">8</span><a href="">爱而不得</a></li>
+                                          <li class="songs"><span class="numbers">9</span><a href="">一步之遥</a></li>
+                                          <li class="songs"><span class="numbers">10</span><a href="">交出邦尼</a></li>
+                                    </ul>
+                                    <div class="seeall"><a href="">查看全部></a></div>
+                              </div>
+                        </div>
+                        <div class="rank_column">
+                              <div class="rank_column_top">
+                                    <a href="" class="column_top_left" style="background: url(http://p3.music.126.net/N2HO5xfYEqyQ8q6oxCw8IQ==/18713687906568048.jpg?param=100y100) no-repeat; background-size: cover;"></a>
+                                    <div class="column_top_right">
+                                          <a>云音乐飙升榜</a>
+                                          <span style="background: url(./source/play.gif) no-repeat; background-size: cover "></span>
+                                          <span style="background: url(./source/collect.gif) no-repeat; background-size: cover "></span>
+                                    </div>
+                              </div>
+                              <div class="rank_column_bottom">
+                                    <ul>
+                                          <li class="songs"><span class="numbers" style="color: #c10d0c;">1</span><a href="">夏天的风</a></li>
+                                          <li class="songs"><span class="numbers" style="color: #c10d0c;">2</span><a href="">好想爱这个世界啊(Live)</a></li>
+                                          <li class="songs"><span class="numbers" style="color: #c10d0c;">3</span><a href="">你我不一(Live)</a></li>
+                                          <li class="songs"><span class="numbers">4</span><a href="">达拉崩吧(Live)</a></li>
+                                          <li class="songs"><span class="numbers">5</span><a href="">过活</a></li>
+                                          <li class="songs"><span class="numbers">6</span><a href="">红梅赞</a></li>
+                                          <li class="songs"><span class="numbers">7</span><a href="">强迫症 (《疯人院》) (Live)</a></li>
+                                          <li class="songs"><span class="numbers">8</span><a href="">天下</a></li>
+                                          <li class="songs"><span class="numbers">9</span><a href="">总有一天你会知道</a></li>
+                                          <li class="songs"><span class="numbers">10</span><a href="">你最近还好吗</a></li>
+                                    </ul>
+                                    <div class="seeall"><a href="">查看全部></a></div>
+                              </div>
+                        </div>
+                        <div class="rank_column">
+                              <div class="rank_column_top">
+                                    <a href="" class="column_top_left" style="background: url(http://p4.music.126.net/sBzD11nforcuh1jdLSgX7g==/18740076185638788.jpg?param=100y100) no-repeat; background-size: cover;"></a>
+                                    <div class="column_top_right">
+                                          <a>云音乐飙升榜</a>
+                                          <span style="background: url(./source/play.gif) no-repeat; background-size: cover "></span>
+                                          <span style="background: url(./source/collect.gif) no-repeat; background-size: cover "></span>
+                                    </div>
+                              </div>
+                              <div class="rank_column_bottom">
+                                    <ul>
+                                          <li class="songs"><span class="numbers" style="color: #c10d0c;">1</span><a href="">喉咙唱的沙哑</a></li>
+                                          <li class="songs"><span class="numbers" style="color: #c10d0c;">2</span><a href="">手心</a></li>
+                                          <li class="songs"><span class="numbers" style="color: #c10d0c;">3</span><a href="">众心相</a></li>
+                                          <li class="songs"><span class="numbers">4</span><a href="">今夜的江滩公园没有烟花跨年</a></li>
+                                          <li class="songs"><span class="numbers">5</span><a href="">因为他</a></li>
+                                          <li class="songs"><span class="numbers">6</span><a href="">Luv Song</a></li>
+                                          <li class="songs"><span class="numbers">7</span><a href="">人海十万里</a></li>
+                                          <li class="songs"><span class="numbers">8</span><a href="">你一不小心碰上了渣男</a></li>
+                                          <li class="songs"><span class="numbers">9</span><a href="">给命（Acoustic Version）</a></li>
+                                          <li class="songs"><span class="numbers">10</span><a href="">黑日梦</a></li>
+                                    </ul>
+                                    <div class="seeall"><a href="">查看全部></a></div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+      <div class="main_right">
+            <div class="login">
+                  <p>登录网易云音乐，可以享受无限收藏的乐趣，并且无限同步到手机</p>
+                  <a href="" class="loginbox">用户登录</a>
+            </div>
+            <div class="singer">
+                  <div class="all">
+                        <p>入驻歌手</p>
+                        <a href="">查看全部></a>
+                  </div>
+                  <a href="" class="singerlist">
+                        <span class="sp"></span>
+                        <div>
+                              <h4 class="singername">张惠妹aMEI</h4>
+                              <p class="singeritrd">台湾歌手张惠妹</p>
+                        </div>
+                  </a>
+                  <a href="" class="singerlist">
+                        <span class="sp"></span>
+                        <div>
+                              <h4 class="singername">张惠妹aMEI</h4>
+                              <p class="singeritrd">台湾歌手张惠妹</p>
+                        </div>
+                  </a>
+                  <a href="" class="singerlist">
+                        <span class="sp"></span>
+                        <div>
+                              <h4 class="singername">张惠妹aMEI</h4>
+                              <p class="singeritrd">台湾歌手张惠妹</p>
+                        </div>
+                  </a>
+                  <a href="" class="singerlist">
+                        <span class="sp"></span>
+                        <div>
+                              <h4 class="singername">张惠妹aMEI</h4>
+                              <p class="singeritrd">台湾歌手张惠妹</p>
+                        </div>
+                  </a>
+                  <a href="" class="singerlist">
+                        <span class="sp"></span>
+                        <div>
+                              <h4 class="singername">张惠妹aMEI</h4>
+                              <p class="singeritrd">台湾歌手张惠妹</p>
+                        </div>
+                  </a>
+                  <a href="" class="apply">申请成为网易音乐人</a>
+            </div>
+            <div class="anchor">
+                  <div class="all">
+                        <p>热门主播</p>
+                  </div>
+                  <div class="anchorlist">
+                        <span class="ap"></span>
+                        <div>
+                              <a href="" class="anchorname">陈立<span class="redV"></span></a>
+                              <p class="anchoritrd">心理学家、美食家陈立教授</p>
+                        </div>
+                  </div>
+                  <div class="anchorlist">
+                        <span class="ap"></span>
+                        <div>
+                              <a href="" class="anchorname">陈立<span class="redV"></span></a>
+                              <p class="anchoritrd">心理学家、美食家陈立教授</p>
+                        </div>
+                  </div>
+                  <div class="anchorlist">
+                        <span class="ap"></span>
+                        <div>
+                              <a href="" class="anchorname">陈立<span class="redV"></span></a>
+                              <p class="anchoritrd">心理学家、美食家陈立教授</p>
+                        </div>
+                  </div>
+                  <div class="anchorlist">
+                        <span class="ap"></span>
+                        <div>
+                              <a href="" class="anchorname">陈立<span class="redV"></span></a>
+                              <p class="anchoritrd">心理学家、美食家陈立教授</p>
+                        </div>
+                  </div>
+                  <div class="anchorlist">
+                        <span class="ap"></span>
+                        <div>
+                              <a href="" class="anchorname">陈立<span class="redV"></span></a>
+                              <p class="anchoritrd">心理学家、美食家陈立教授</p>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>
+<footer>
+      <div class="footer">
+            <div class="footer_left">
+                  <div class="others">
+                        <a href="">服务条款</a>
+                        <a href="">隐私政策</a>
+                        <a href="">儿童隐私政策</a>
+                        <a href="">版权投诉指引</a>
+                        <a href="">意见反馈</a>
+                  </div>
+                  <div class="copyright">
+                        <span>网易公司版权所有©1997-2020</span>
+                        <span>杭州乐读科技有限公司运营：</span>
+                        <a href="">浙网文[2018]3506-263号</a>
+                  </div>
+                  <div class="report">
+                        <span>违法和不良信息举报电话：0571-89853516</span>
+                        <span>举报邮箱：</span>
+                        <a href="">ncm5990@163.com</a>
+                  </div>
+                  <div class="brand">
+                        <span>粤B2-20090191-18</span>
+                        <a href="">工业和信息化部备案管理系统网站</a>
+                  </div>
+            </div>
+            <div class="footer_right">
+                  <a href="" style="background: url(./source/renzheng.gif) no-repeat;background-size: cover"></a>
+                  <a href="" style="background: url(./source/duli.gif) no-repeat;background-size: cover"></a>
+                  <a href="" style="background: url(./source/zan.gif) no-repeat;background-size: cover"></a>
+                  <a href="" style="background: url(./source/jiangli.gif) no-repeat;background-size: cover"></a>
+            </div>
+      </div>
+</footer>
+</body>
+<script src="js/cloudmusic.js"></script>
+</html>

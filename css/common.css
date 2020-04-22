@@ -1,0 +1,57 @@
+body,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+span,
+p,
+img,
+input{
+      margin:0;
+      padding:0;
+      border:0;
+      outline:0;
+      font: inherit;
+      vertical-align: baseline;
+}
+body,
+html {
+      font:12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif;
+      line-height: 1;
+      word-wrap: break-word;
+      word-break: break-word;
+}
+h1{ font-size:24px;}
+h2{ font-size:20px;}
+h3{ font-size:18px;}
+h4{ font-size:16px;}
+h5{ font-size:14px;}
+h6{ font-size:12px;}
+ol,
+ul{
+      list-style: none;
+}
+a{
+      color: #ccc;
+      font-size: 14px;
+      font-weight: normal;
+      text-decoration: none;
+}
+div{
+      box-sizing: border-box;
+}
+table {
+      border-collapse: collapse;
+      border-spacing: 0;
+}
+textarea,
+input {
+      word-wrap:break-word;
+      word-break:break-all;
+      padding:0px;
+}

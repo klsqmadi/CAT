@@ -69,3 +69,4 @@ function loopplay(intervalTime) {//intervalTime 是每隔time秒播放下一张
 loopplay(2000);//传入是每隔time秒播放下一张  的 参数
 /////////////////////////////
 /////////////////////////////轮播图  函数封装结束  目前只有一个参数intervalTime  (播放时间)
+////////

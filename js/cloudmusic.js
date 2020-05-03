@@ -210,6 +210,12 @@ function rank(myClassName, id) {
                 songs[i].firstChild.setAttribute('data-id', data.playlist.tracks[i].id);
             }
         }
+        else{
+            document.querySelector('.unload').style.opacity = 1;
+            setTimeout(function () {
+                document.querySelector('.unload').style.opacity = 0;
+            },3000);
+        }
     });
 }
 
@@ -220,14 +226,14 @@ var playlist = document.querySelector('.playlist');//获取  播放历史里的u
 function rp(myId) {
     var rank = document.querySelector("" + myId + "");//事件委托
     rank.addEventListener('click', function (e) {
-            if(e.target.tagName === "I"){//事件委托 判断当前点击的是否为  i标签
+        if (e.target.tagName === "I") {//事件委托 判断当前点击的是否为  i标签
             id = e.target.getAttribute('data-id');//得到 h5  里 的自定义id
             Iid = e.target.getAttribute('data-id');
             audio.setAttribute('src', "https://music.163.com/song/media/outer/url?id=" + id + ".mp3");
-            audio.setAttribute('data-number',""+playlist.children.length+"");
+            audio.setAttribute('data-number', "" + playlist.children.length + "");
             Ajax('JSON').get("http://musicapi.leanapp.cn/song/detail?ids=" + id + "", function (songdata) {
                 var dt = formatSeconds(songdata.songs[0].dt / 1000);
-                for(let i = 0;i < playlist.children.length;i++){
+                for (let i = 0; i < playlist.children.length; i++) {
                     playlist.children[i].className = 'playlists';
                 }//给播放历史里的li  清除类名
                 var listli = '<li class="playlists playing"><i class="listplay " data-id="' + id + '"></i><h4 class="listname">' + songdata.songs[0].name + '</h4><span class="listsinger">' + songdata.songs[0].ar[0].name + '</span><h6 class="listtime">' + dt + '</h6></li>'
@@ -236,6 +242,7 @@ function rp(myId) {
         }
     })
 }
+
 rp('#risesongs');
 rp('#newsong');
 rp('#originsongs');
@@ -255,15 +262,15 @@ if (sessionStorage.getItem('userdata')) {
 var playpause = document.querySelector('.playpause');
 var audio = document.querySelector('#audio');
 //给playlists  的播放按钮 注册事件
-if(document.querySelectorAll('.playlists')){//判断 是否存在播放历史 里的li
-    playlist.addEventListener('click',function (e) {//给播放历史里的播放按钮注册事件
-        if(e.target.tagName === "I"){//事件委托  判断点击的是否为播放按钮，即i标签
+if (document.querySelectorAll('.playlists')) {//判断 是否存在播放历史 里的li
+    playlist.addEventListener('click', function (e) {//给播放历史里的播放按钮注册事件
+        if (e.target.tagName === "I") {//事件委托  判断点击的是否为播放按钮，即i标签
             Iid = e.target.getAttribute('data-id');
             audio.setAttribute('src', "https://music.163.com/song/media/outer/url?id=" + Iid + ".mp3");//给audio 添加当前的src
-            for(let i = 0;i < playlist.children.length;i++){//给播放历史里的li  清除类名
+            for (let i = 0; i < playlist.children.length; i++) {//给播放历史里的li  清除类名
                 playlist.children[i].className = 'playlists';
-                if(e.target.parentNode === playlist.children[i]){
-                    audio.setAttribute('data-number',""+i+"");
+                if (e.target.parentNode === playlist.children[i]) {
+                    audio.setAttribute('data-number', "" + i + "");
                 }
             }
             e.target.parentNode.className = 'playlists playing';//给播放历史里要点击的li  添加类名
@@ -272,6 +279,8 @@ if(document.querySelectorAll('.playlists')){//判断 是否存在播放历史 �
 }
 var currenttime = 0;//当前歌曲时间
 var historyFlag = 0;//判断  list是否展开
+var cc = document.querySelector('.cc');
+var c_up = document.querySelector('.icon-cs-xs-1');
 var timekeeper;//定义一个定时器
 //这里需要用到 上面的id
 audio.addEventListener('play', function () {
@@ -294,11 +303,35 @@ audio.addEventListener('play', function () {
         Ajax('JSON').get("http://musicapi.leanapp.cn/song/detail?ids=" + Iid + "", function (songdata) {
             if (songdata.code === 200) {
                 document.querySelector('.getsong').innerText = "" + songdata.songs[0].name + "";//更改  歌名
+                document.querySelector('.c_songname').innerText = "" + songdata.songs[0].name + "";//更改  歌名
                 document.querySelector('.getsinger').innerText = "" + songdata.songs[0].ar[0].name + "";//更改  歌手
+                document.querySelector('.c_singer').innerText = "" + songdata.songs[0].ar[0].name + "";//更改  歌手
                 document.querySelector('.songpic').style.background = 'url(' + songdata.songs[0].al.picUrl + ') no-repeat';//更换  歌手图片
+                document.querySelector('.c_pic').style.background = 'url(' + songdata.songs[0].al.picUrl + ') no-repeat';//更换  歌手图片
                 document.querySelector('.songpic').style.backgroundSize = 'cover';
+                document.querySelector('.c_pic').style.backgroundSize = 'cover';
             }
-        })
+        });//歌手名字 歌曲 加载
+        Ajax('JSON').get("http://musicapi.leanapp.cn/comment/music?id=" + Iid + "", function (comment) {
+            if (comment.code === 200) {
+
+                cc.innerHTML = '<i class="icon-cs-xs-1 iconfont"></i>';
+                cc.addEventListener('click', function (e) {
+                    if(e.target.tagName === 'I'){
+                        c_song.style.display = 'flex';
+                        cc.style.height = '0';
+                    }
+                });
+                for (let i = 0; i < comment.hotComments.length; i++) {
+                    var c_url = comment.hotComments[i].user.avatarUrl;
+                    var cts = '<div class="ct"><div class="ct_pic"></div><div class="ct_text"><span class="ct_name">' + comment.hotComments[i].user.nickname + '</span>' + comment.hotComments[i].content + '</div><i class="icon-- iconfont ct_nice"></i></div>';
+                    cc.insertAdjacentHTML('beforeend', cts);
+                    var ct_pic = document.querySelectorAll('.ct_pic');
+                    ct_pic[i].style.background = 'url("'+c_url+'") no-repeat';
+                    ct_pic[i].style.backgroundSize = 'cover';
+                }
+            }
+        })//sidebar 歌手 歌曲 加载
     }
 });
 audio.addEventListener('pause', function () {//当暂停时
@@ -350,49 +383,83 @@ vlall.addEventListener('click', function (e) {
 //上一首或下一首
 var nextsong = document.querySelector('.nextsong');
 var presong = document.querySelector('.lastsong');
-nextsong.addEventListener('click',function () {
+nextsong.addEventListener('click', function () {
     var number = parseInt(audio.getAttribute('data-number'));//获取当前播放的li 的索引号
-    if(playlist.children.length !== ++number){//判断number+1 是否为最后一个
+    if (playlist.children.length !== ++number) {//判断number+1 是否为最后一个
         Iid = playlist.children[number].firstChild.getAttribute('data-id');//得到  当前播放的li的下一个的id
         audio.setAttribute('src', "https://music.163.com/song/media/outer/url?id=" + Iid + ".mp3");//给audio 添加当前的src
-        audio.setAttribute('data-number',""+number+"");//将audio 的h5 data-number  加1
-        for(let i = 0;i < playlist.children.length;i++){//给播放历史里的li  清除类名
+        audio.setAttribute('data-number', "" + number + "");//将audio 的h5 data-number  加1
+        for (let i = 0; i < playlist.children.length; i++) {//给播放历史里的li  清除类名
             playlist.children[i].className = 'playlists';
-         }
+        }
         playlist.children[number].className = 'playlists playing';//给播放历史里要点击的li  添加类名
-    }
-    else{
+    } else {
         Iid = playlist.children[0].firstChild.getAttribute('data-id');//得到  当前播放的li的第一个的id
         audio.setAttribute('src', "https://music.163.com/song/media/outer/url?id=" + Iid + ".mp3");//给audio 添加当前的src
-        audio.setAttribute('data-number',0);//将audio 的h5 data-number  加1
-        for(let i = 0;i < playlist.children.length;i++){//给播放历史里的li  清除类名
+        audio.setAttribute('data-number', 0);//将audio 的h5 data-number  加1
+        for (let i = 0; i < playlist.children.length; i++) {//给播放历史里的li  清除类名
             playlist.children[i].className = 'playlists';
         }
         playlist.children[0].className = 'playlists playing';//给播放历史里要点击的li  添加类名
     }
 });
-presong.addEventListener('click',function () {
+presong.addEventListener('click', function () {
     var number = parseInt(audio.getAttribute('data-number'));//获取当前播放的li 的索引号
-    var length = playlist.children.length-1;
-    if(number !== 0){//判断number+1 是否为最后一个
-        Iid = playlist.children[number-1].firstChild.getAttribute('data-id');//得到  当前播放的li的下一个的id
+    var length = playlist.children.length - 1;
+    if (number !== 0) {//判断number+1 是否为最后一个
+        Iid = playlist.children[number - 1].firstChild.getAttribute('data-id');//得到  当前播放的li的下一个的id
         audio.setAttribute('src', "https://music.163.com/song/media/outer/url?id=" + Iid + ".mp3");//给audio 添加当前的src
-        audio.setAttribute('data-number',""+number-1+"");//将audio 的h5 data-number  加1
-        for(let i = 0;i < playlist.children.length;i++){//给播放历史里的li  清除类名
+        audio.setAttribute('data-number', "" + number - 1 + "");//将audio 的h5 data-number  加1
+        for (let i = 0; i < playlist.children.length; i++) {//给播放历史里的li  清除类名
             playlist.children[i].className = 'playlists';
         }
-        playlist.children[number-1].className = 'playlists playing';//给播放历史里要点击的li  添加类名
-    }
-    else{
+        playlist.children[number - 1].className = 'playlists playing';//给播放历史里要点击的li  添加类名
+    } else {
         Iid = playlist.children[length].firstChild.getAttribute('data-id');//得到  当前播放的li的最后一个的id
         audio.setAttribute('src', "https://music.163.com/song/media/outer/url?id=" + Iid + ".mp3");//给audio 添加当前的src
-        audio.setAttribute('data-number',""+length+"");//将audio 的h5 data-number  减1
-        for(let i = 0;i < playlist.children.length;i++){//给播放历史里的li  清除类名
+        audio.setAttribute('data-number', "" + length + "");//将audio 的h5 data-number  减1
+        for (let i = 0; i < playlist.children.length; i++) {//给播放历史里的li  清除类名
             playlist.children[i].className = 'playlists';
         }
         playlist.children[length].className = 'playlists playing';//给播放历史里要点击的li  添加类名
     }
 });
+
+
+//评论
+var comment = document.querySelector('.comment');
+var c_close = document.querySelector('.icon-close');
+var ch = document.querySelector('.commenthidden');
+var c_drop = document.querySelector('.icon-cs-xx-1');
+var c_song = document.querySelector('.c_song');
+c_close.addEventListener('click', function () {
+    comment.style.left = '-420px';
+    ch.style.left = '0';
+});
+ch.addEventListener('click', function () {
+    comment.style.left = '40px';
+    ch.style.left = '-50px';
+});
+c_drop.addEventListener('click', function () {
+    c_song.style.display = 'none';
+    cc.style.height = '100%';
+});
+c_up.addEventListener('click', function () {
+    c_song.style.display = 'flex';
+    cc.style.height = '0';
+});
+cc.addEventListener('click', function (e) {
+    if (e.target.className === 'icon-- iconfont ct_nice') {
+        e.target.style.color = 'red';
+    }
+});
+
+
+
+
+
+
+
 
 
 

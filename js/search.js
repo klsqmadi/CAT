@@ -103,6 +103,12 @@ window.addEventListener('scroll', function () {
                         }
                     }
                 }
+                else{
+                    document.querySelector('.lazyload').innerHTML = '加载失败';
+                    setTimeout(function () {
+                        document.querySelector('.lazyload').style.display = 'none';
+                    })
+                }
             });
         }, 3000);
     } else {

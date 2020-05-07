@@ -88,10 +88,17 @@ loopplay(2000);//传入是每隔time秒播放下一张  的 参数
 var search = document.querySelector('.search');
 search.addEventListener('keydown', function (e) {
     if (e.keyCode === 13) {
-        var url = encodeURI("./search.html?keyword=" + search.value + "");//进行编码  防止中文出现乱码
+        let url = encodeURI("./search.html?keyword=" + search.value + "");//进行编码  防止中文出现乱码
         location.assign("" + url + "");
         search.value = '';
     }
+});
+
+// 我的音乐 跳转
+var mymusic = document.querySelector('.mymusic');
+mymusic.addEventListener('click',function () {
+    let url = encodeURI("./like.html");
+    location.assign(""+url+"");
 });
 
 //登录页面点击  关闭按钮
@@ -148,9 +155,8 @@ mbbtn.addEventListener('click', function () {
     var mbnum = document.querySelector('.mbnum').value;//获取手机号
     var mbpass = document.querySelector('.mbpass').value;//获取密码
     Ajax('JSON').get("http://musicapi.leanapp.cn/login/cellphone?phone=" + mbnum + "&password=" + mbpass + "", function (data) {
-        loginCode = data.code;//得到code  用于判定登录状态
-        if (loginCode === 200) {//密码正确 登录成功
-            sessionStorage.setItem('userdata', JSON.stringify(data));
+        if (data.code === 200) {//密码正确 登录成功
+            sessionStorage.setItem('data', JSON.stringify(data));
             Hide('.login1');
             Show('.login2');
             Hide('.click_show');//隐藏 登录 这两个体  让头像显示
@@ -162,6 +168,8 @@ mbbtn.addEventListener('click', function () {
             //更新信息
             document.querySelector('.suce_login').style.background = 'url(' + data.profile.avatarUrl + ') no-repeat';  //通过api获取账号的头像背景
             document.querySelector('.suce_login').style.backgroundSize = 'cover';////更换头像
+            document.querySelector('.idpic').style.background = 'url(' + data.profile.avatarUrl + ') no-repeat';
+            document.querySelector('.idpic').style.backgroundSize = 'cover';////更换头像
             document.querySelector('.nickname').innerText = "" + data.profile.nickname + "";//获取 名字
             document.querySelector('.eC').innerText = "" + data.profile.eventCount + "";//获取  动态数量
             document.querySelector('.fl').innerText = "" + data.profile.follows + "";//获取  关注  数量
@@ -195,6 +203,40 @@ embtn.addEventListener('click', function () {
             document.querySelector('.empass').value = '';
         }
     });
+});
+
+//防止刷新  要再次登录  储存session
+if (sessionStorage.getItem('data')) {
+    let data = JSON.parse(sessionStorage.getItem('data'));
+    if (data.token) {
+        Hide('.click_show');//隐藏 登录 这两个字  让头像显示
+        Show('.suce_login');
+        Hide('.login1');
+        Show('.login2');
+        clickClose.click();//同时关闭  登录框   即用函数模拟手动 点击，，执行一次  关闭事件
+        document.querySelector('.suce_login').style.background = 'url(' + data.profile.avatarUrl + ') no-repeat';  //通过api获取账号的头像背景
+        document.querySelector('.suce_login').style.backgroundSize = 'cover';////更换头像
+        document.querySelector('.idpic').style.background = 'url(' + data.profile.avatarUrl + ') no-repeat';
+        document.querySelector('.idpic').style.backgroundSize = 'cover';////更换头像
+        document.querySelector('.nickname').innerText = "" + data.profile.nickname + "";//获取 名字
+        document.querySelector('.eC').innerText = "" + data.profile.eventCount + "";//获取  动态数量
+        document.querySelector('.fl').innerText = "" + data.profile.follows + "";//获取  关注  数量
+        document.querySelector('.fld').innerText = "" + data.profile.followeds + "";//获取  粉丝  数量
+        Ajax('JSON').get("http://musicapi.leanapp.cn/user/detail?uid=" + data.account.id + "", function (leveldata) {
+            document.querySelector('.level').innerText = "" + leveldata.level + "";//获取 等级
+        })
+    }
+}
+
+//退出登录
+var Signout = document.querySelector('.Signout');
+Signout.addEventListener('click',function () {
+    sessionStorage.removeItem('data');
+    Show('.click_show');//隐藏 登录 这两个字  让头像显示
+    Hide('.suce_login');
+    Show('.login1');
+    Hide('.login2');
+
 });
 
 //榜单 动态获取   函数封装
@@ -236,7 +278,7 @@ function rp(myId) {
                 for (let i = 0; i < playlist.children.length; i++) {
                     playlist.children[i].className = 'playlists';
                 }//给播放历史里的li  清除类名
-                var listli = '<li class="playlists playing"><i class="listplay " data-id="' + id + '"></i><h4 class="listname">' + songdata.songs[0].name + '</h4><span class="listsinger">' + songdata.songs[0].ar[0].name + '</span><h6 class="listtime">' + dt + '</h6></li>'
+                let listli = '<li class="playlists playing"><i class="listplay " data-id="' + id + '"></i><h4 class="listname">' + songdata.songs[0].name + '</h4><span class="listsinger">' + songdata.songs[0].ar[0].name + '</span><h6 class="listtime">' + dt + '</h6></li>'
                 playlist.insertAdjacentHTML('beforeend', listli);//给播放历史 新增一个当前点击的li
             })
         }
@@ -247,16 +289,7 @@ rp('#risesongs');
 rp('#newsong');
 rp('#originsongs');
 
-//防止刷新  要再次登录  储存session
-if (sessionStorage.getItem('userdata')) {
-    let userdata = JSON.parse(sessionStorage.getItem('userdata'));
-    if (userdata.token) {
-        Hide('.click_show');//隐藏 登录 这两个字  让头像显示
-        Show('.suce_login');
-        document.querySelector('.suce_login').style.background = 'url(' + userdata.profile.avatarUrl + ') no-repeat';  //通过api获取账号的头像背景
-        document.querySelector('.suce_login').style.backgroundSize = 'cover';////更换头像
-    }
-}
+
 
 //播放器 功能
 var playpause = document.querySelector('.playpause');
@@ -289,17 +322,18 @@ audio.addEventListener('play', function () {
         var progress = document.querySelector(".alltime");
         progress.addEventListener('click', function (e) {//随意点击 进度条  跳转时长
             var x = e.pageX - (this.offsetLeft - this.clientWidth / 2 + this.offsetParent.offsetLeft + this.offsetParent.offsetParent.offsetLeft) - 1;//得到当前 鼠标在 总长度 里的坐标
-            currenttime = audio.duration * x / 560;//小学算法  相似比例问题
+            currenttime = audio.duration * x / 493;//小学算法  相似比例问题
             audio.currentTime = "" + currenttime + "";
         });
         timekeeper = setInterval(function () {//设置定时器， 在播放时  时长+1
             currenttime++;
-            var currentlength = (currenttime / audio.duration) * 560;//小学算法  相似比例问题
+            var currentlength = (currenttime / audio.duration) * 493;//小学算法  相似比例问题
             document.querySelector('.currenttime').style.width = "" + currentlength + "" + "px";//当前进度条  宽度变化
             document.querySelector('.songcurrenttime').innerText = "" + formatSeconds(currenttime) + "";//每次写入 播放时长
         }, 1000);//播放时  调用定时器
         document.querySelector('.songalltime').innerText = "" + alltime + "";//写入 总时长
         playpause.className = 'playpause icon-zantingtingzhi iconfont';//更改播放图标
+        document.querySelector('.c_pic').style.animationPlayState = 'running';
         Ajax('JSON').get("http://musicapi.leanapp.cn/song/detail?ids=" + Iid + "", function (songdata) {
             if (songdata.code === 200) {
                 document.querySelector('.getsong').innerText = "" + songdata.songs[0].name + "";//更改  歌名
@@ -317,7 +351,7 @@ audio.addEventListener('play', function () {
 
                 cc.innerHTML = '<i class="icon-cs-xs-1 iconfont"></i>';
                 cc.addEventListener('click', function (e) {
-                    if(e.target.tagName === 'I'){
+                    if(e.target.className === 'icon-cs-xs-1 iconfont'){
                         c_song.style.display = 'flex';
                         cc.style.height = '0';
                     }
@@ -336,6 +370,7 @@ audio.addEventListener('play', function () {
 });
 audio.addEventListener('pause', function () {//当暂停时
     playpause.className = 'playpause icon-icon-4 iconfont';//更改 图标
+    document.querySelector('.c_pic').style.animationPlayState = 'paused';
     clearInterval(timekeeper);//清除定时器
 });
 audio.addEventListener('abort', function () {//当 可以播放时，清除上一个定时器，播放时长为0

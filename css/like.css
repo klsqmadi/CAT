@@ -1,0 +1,214 @@
+body{
+      background: linear-gradient(120deg, #8276bc, #453e68, #282246); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+body::-webkit-scrollbar{
+      display: none;
+}
+.container{
+      overflow: hidden;
+      margin: 50px auto;
+      width: 1500px;
+      height: 843.75px;
+      position: relative;
+      box-shadow: 0 0 10px #000000;
+}
+video{
+      position: absolute;
+      left: 0;
+      top: 0;
+      max-width: 100%;
+      z-index: -2;
+      opacity: .5;
+}
+.header{
+      overflow: hidden;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      height: 50px;
+      font-size: 24px;
+      z-index: 1;
+      color: #292929;
+}
+.header>div{
+      height: 50px;
+      line-height: 60px;
+      text-align: center;
+      flex-grow: 1;
+}
+.home:hover{
+      color: #cca25d;
+}
+.collect:hover{
+      color: #cca25d;
+}
+.current{
+      color: #67bdcc;
+}
+.header>.search{
+      flex-grow: 2;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      width: 300px;
+      height: 40px;
+      background: #cccccc70;
+      border-radius: 25px;
+}
+.search:hover{
+      background: rgba(122, 121, 124, 0.44);
+}
+.search>i{
+      margin:0 20px 0 10px;
+}
+.search>input{
+      width: 90%;
+      color: #333333;
+      font-size: 18px;
+      background: unset;
+}
+.self{
+      position: relative;
+      flex-basis: 80px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+}
+.myhead{
+      margin-top: 10px;
+      margin-right: 20px;
+      width: 30px;
+      height: 30px;
+      background: #0c0c0c;
+      border-radius: 100%;
+}
+.myname{
+      margin-top: 10px;
+      font-size: 18px;
+}
+.self>i{
+      display: inline-block;
+      width: 30px;
+      height: 45px;
+      color: #ffa016;
+}
+
+.homelist{
+      display: none;
+      margin-top: 50px;
+      width: 100%;
+      height: 80%;
+      overflow: auto;
+}
+.collectlist{
+      margin-top: 50px;
+      width: 100%;
+      height: 80%;
+      overflow: auto;
+}
+.collectlist::-webkit-scrollbar{
+      display: none;
+}
+.likelist{
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 50px;
+      font-size: 20px;
+      line-height: 50px;
+}
+.even{
+      background: #33333340;
+}
+.numbers{
+      margin-left: 50px;
+      margin-right: 100px;
+      width: 50px;
+      color: #4f66b7;
+}
+.songname{
+      width: 600px;
+}
+.singername{
+      width: 500px;
+      color: #cccccc80;
+      font-size: 17px;
+}
+.songtime{
+
+}
+.player{
+}
+.alllength{
+      position: relative;
+      width: 100%;
+      height: 3px;
+      background: #4f66b7;
+}
+.currentl{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(120deg, #fc6a8a, #dc5d77, #bc2a43); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.cp{
+      position: absolute;
+      right: -3px;
+      bottom: -3px;
+      width: 10px;
+      height: 10px;
+      background: #b393ff;
+      border-radius: 100%;
+}
+.playbtn{
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      text-align: center;
+}
+.playbtn>i{
+      display: inline-block;
+      font-size: 30px;
+}
+.playbtn>i:nth-child(1){
+      margin-top: 20px;
+      color: #70bc95;
+}
+.playbtn>i:nth-child(2){
+      margin: 15px 20px;
+      font-size: 40px;
+      color: #d1d8d5;
+}
+.playbtn>i:nth-child(3){
+      margin-top: 20px;
+      margin-left: -5px;
+      margin-right: 200px;
+      color: #70bc95;
+}
+.playbtn>i:nth-child(4){
+      margin-right: 20px;
+      margin-top: 20px;
+      font-size: 20px;
+      color: #7590a8;
+}
+.vl{
+      margin-top: 27px;
+      margin-right: 200px;
+      position: relative;
+      width: 100px;
+      height: 5px;
+      background: #8376c6;
+
+      border-radius: 20px;
+}
+.vc{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50%;
+      height: 100%;
+      background: #cccccc;
+}

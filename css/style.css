@@ -1,7 +1,6 @@
 body {
       /*overflow-y: hidden;*/
       font-family: Arial, Helvetica, sans-serif;
-      /*background: #000000;*/
 }
 
 a:hover {
@@ -116,11 +115,28 @@ header {
 }
 
 .suce_login {
+      position: relative;
       display: none;
       width: 30px;
       height: 30px;
       background: #9B0909;
       border-radius: 100%;
+}
+.suce_login:hover .Signout{
+      display: block;
+}
+.Signout{
+      display: none;
+      position: absolute;
+      left: -50px;
+      bottom: -35px;
+      width: 134px;
+      height: 34px;
+      text-align: center;
+      line-height: 30px;
+      background: #333333;
+      color: #cccccc;
+      cursor: pointer;
 }
 
 /*header_list style   start*/
@@ -730,7 +746,6 @@ header {
 .idpic {
       width: 80px;
       height: 80px;
-      background: url("http://p1.music.126.net/_mioTENHLyqMJbeN5qPrfg==/109951164931384100.jpg?param=80y80");
 }
 
 .info {
@@ -900,7 +915,8 @@ header {
       margin-right: 10px;
       width: 40px;
       height: 40px;
-      background: url("http://p1.music.126.net/H3QxWdf0eUiwmhJvA4vrMQ==/1407374893913311.jpg?param=40y40");
+      background: url("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2406308599,4041461768&fm=11&gp=0.jpg") no-repeat;
+      background-size: cover;
 }
 
 .anchorlist > div {
@@ -1231,6 +1247,7 @@ footer {
       background: url(https://s2.music.126.net/style/web2/img/frame/statbar.png?4554eef4bad41d5bf91dc26fd7ccd0ff) no-repeat 0 9999px;
       background-position: right 0;
       border-radius: 10px;
+      cursor: pointer;
 }
 
 .currenttime {
@@ -1243,6 +1260,7 @@ footer {
       z-index: 2;
       background: #c70c0c;
       border-radius: 10px;
+      cursor: pointer;
 }
 
 .songtime {
@@ -1283,11 +1301,11 @@ footer {
 .CP_volume {
       display: none;
       position: absolute;
-      right: 0;
+      right: -21px;
       top: -250px;
       width: 150px;
       height: 250px;
-      background: #22222250;
+      transition-duration: .5s;
 }
 
 .vlall {
@@ -1297,7 +1315,9 @@ footer {
       transform: translate(-50%, -50%);
       width: 15%;
       height: 80%;
-      background: #0f9aff;
+      background: #000000;
+      border-radius: 0 0  10px 10px;
+      box-shadow: 0 0 20px 1px #222222;
 }
 
 .vlcur {
@@ -1306,7 +1326,8 @@ footer {
       bottom: 0;
       width: 100%;
       height: 50%;
-      background: #ff9dcb;
+      background: #dcc4ae;
+      border-radius: 0 0 10px 10px;
 }
 
 .CP_list {
@@ -1384,6 +1405,7 @@ footer {
       transition-duration: .7s;
       transition-timing-function: ease-in-out;
       overflow: hidden;
+      box-shadow: 10px 15px 20px #222222;
 }
 .c_song{
       /*display: none;*/
@@ -1399,6 +1421,19 @@ footer {
       height: 150px;
       border-radius: 100%;
       background: antiquewhite;
+      animation-name: turn;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-duration: 20s;
+      transition-duration: 1s;
+      animation-play-state: paused;
+}
+@keyframes turn {
+      from{
+      }
+      to{
+            transform: rotate(360deg);
+      }
 }
 .c_songname{
       margin-bottom: 30px;
@@ -1407,10 +1442,21 @@ footer {
       text-align: center;
 }
 .c_singer{
-      margin-bottom: 200px;
+      margin-bottom: 50px;
       font-size: 16px;
       text-align: center;
       color: #99de7f;
+}
+.ly{
+      margin-bottom: 100px;
+      width: 100px;
+      height: 50px;
+}
+.lyc{
+      text-align: center;
+      line-height: 30px;
+      color: #cccccc;
+      font-size: 16px;
 }
 .c_song>i{
       font-size: 50px;
@@ -1432,6 +1478,7 @@ footer {
       bottom: 10px;
       font-size: 30px;
       color: #0f9aff;
+      cursor: pointer;
 }
 .commenthidden{
       display: flex;
@@ -1449,6 +1496,7 @@ footer {
       transition-duration: .3s;
       border-radius: 0 5px 5px 0;
       transition-timing-function: ease-in-out;
+      box-shadow: 2px 4px 10px #222222;
 }
 .commenthidden:hover .icon-fangxiang1{
       opacity: 1;
@@ -1483,6 +1531,7 @@ footer {
       overflow: auto;
       margin-bottom: 50px;
       transition-duration: .7s;
+      background: #22222280;
 }
 .cc::-webkit-scrollbar{
       display: none;
@@ -1496,10 +1545,12 @@ footer {
       cursor: pointer;
 }
 .ct{
+      margin-top: 40px;
       position: relative;
       margin-left: 60px;
-      margin-bottom: 40px;
+      padding-bottom: 20px;
       padding-right: 10px;
+      border-bottom: #ffffff60 1px dashed;
 }
 .ct_pic{
       position: absolute;
@@ -1522,7 +1573,7 @@ footer {
 }
 .ct_nice{
       position: absolute;
-      bottom: -20px;
+      bottom: -23px;
       right: 20px;
       width: 20px;
       height: 20px;
